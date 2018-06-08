@@ -3,5 +3,10 @@ class BlogsController < ApplicationController
     @blogs = blog.all
   end
 
+def new
+  @blog = Blog.new
+end
+
+
 
 end
