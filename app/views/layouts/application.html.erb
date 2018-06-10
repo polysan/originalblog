@@ -10,11 +10,15 @@
 <body>
   <nav>
   <div class="nav-wrapper">
-    <a href="" class="brand-logo">Logo</a>
+    <a href="/" class="brand-logo">Logo</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="">ログイン</a></li>
-      <li><a href="">新規登録<span class="new badge"></span></a></li>
-      <li><a href=""></a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "新規投稿", new_blog_path %></li>
+      <% else %>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
