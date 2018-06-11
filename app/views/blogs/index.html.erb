@@ -8,8 +8,10 @@
         </div>
         <div class="card-action">
           <a href="#">show</a>
+          <% if user_signed_in? && current_user.id == blog.user_id %>
           <a href="#">edit</a>
-          <a href="#">destroy</a>
+          <%= link_to "destory", "/blogs/#{blog.id}", method: :delete %>
+          <% end %>
         </div>
       </div>
     </div>

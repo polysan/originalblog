@@ -13,6 +13,11 @@ class BlogsController < ApplicationController
     Blog.create(blog_params)
   end
 
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy if blog.user_id == current_user.id
+  end
+
 private
   def blog_params
     params.require(:blog).permit(:title,:text).merge(user_id: current_user.id)
