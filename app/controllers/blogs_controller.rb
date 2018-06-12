@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @blogs = Blog.includes(:user).order("created_at DESC").page(params[:page]).per(5)
@@ -16,6 +16,21 @@ class BlogsController < ApplicationController
   def destroy
     blog = Blog.find(params[:id])
     blog.destroy if blog.user_id == current_user.id
+  end
+
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    blog = Blog.find(params[:id])
+    if blog.user_id == current_user.id
+      blog.update(blog_params)
+    end
+  end
+
+  def show
+    @blog =  Blog.find(params[:id])
   end
 
 private
