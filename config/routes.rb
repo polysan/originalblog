@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  root 'blogs#index'
  devise_for :users
- resources :blogs
- get '/users/:id' => 'users#show'
+ resources :blogs do
+  resources :comments, only:  [:create]
+end
+  resources :users, only: [:show]
 end
