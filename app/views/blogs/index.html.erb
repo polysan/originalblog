@@ -7,9 +7,9 @@
           <p><%= simple_format(blog.text) %></p>
         </div>
         <div class="card-action">
-          <%= link_to "show", "/blogs/#{blog.id}", method: :get %>
+          <a href="#">show</a>
           <% if user_signed_in? && current_user.id == blog.user_id %>
-          <%= link_to "edit", "/blogs/#{blog.id}/edit", method: :get %>
+          <a href="#">edit</a>
           <%= link_to "destory", "/blogs/#{blog.id}", method: :delete %>
           <% end %>
         </div>
