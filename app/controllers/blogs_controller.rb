@@ -18,6 +18,12 @@ class BlogsController < ApplicationController
     blog.destroy if blog.user_id == current_user.id
   end
 
+ def show
+    @blog =  Blog.find(params[:id])
+    @comment = Comment.new
+    # @comment = @blog.comments.includes(:user)
+  end
+
   def edit
     @blog = Blog.find(params[:id])
   end
@@ -29,9 +35,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  def show
-    @blog =  Blog.find(params[:id])
-  end
 
 private
   def blog_params
