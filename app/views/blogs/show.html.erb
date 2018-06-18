@@ -30,14 +30,16 @@
   </div>
 <% end %>
 
+<div class="comment">
 <h4>コメント一覧</h4>
-<% if @commnet %>
-  <% @comment.each do |comment| %>
-    <p>
-      <strong>
-        <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>
-      </strong>
-      <%= comment.text %>
-    </p>
+  <% if @comments %>
+    <% @comments.each do |comment| %>
+      <p>
+        <strong>
+          <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>
+        </strong>
+        <%= comment.text %>
+      </p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
